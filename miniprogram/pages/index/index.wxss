@@ -1,0 +1,128 @@
+/* 整体容器 */
+.container {
+  padding: 20rpx;
+  background-color: #f7f6f2;
+}
+
+/* 标题栏 */
+.header {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #5e6d55;
+  padding: 20rpx 0;
+}
+
+/* 月份标题 */
+.month-section {
+  margin-top: 40rpx;
+}
+
+.month-title {
+  display: flex;
+  align-items: center;
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #3a4a3f;
+  margin-bottom: 20rpx;
+}
+
+.month-icon {
+  font-size: 28rpx;
+  color: #3a4a3f;
+  margin-right: 10rpx;
+}
+
+/* 事件项 */
+.event-item {
+  display: flex;
+  align-items: center;
+  padding: 20rpx;
+  background: #ffffff;
+  border-radius: 16rpx;
+  box-shadow: 0 4rpx 10rpx rgba(0, 0, 0, 0.05);
+  position: relative;
+  margin-bottom: 20rpx;
+  flex-wrap: wrap; /* 允许换行 */
+  justify-content: space-between; /* 居中内容 */
+}
+
+/* 时间点样式 */
+.event-dot {
+  width: 10rpx;
+  height: 10rpx;
+  background-color: #8ba89c;
+  border-radius: 50%;
+  margin-right: 20rpx;
+}
+
+/* 事件时间 */
+.event-time {
+  font-size: 28rpx;
+  color: #a1a7a3;
+  margin-right: 15rpx;
+}
+
+/* 事件标题 */
+.event-title {
+  font-size: 30rpx;
+  color: #37463e;
+  font-weight: bold;
+  word-wrap: break-word;  /* 文字超长时自动换行 */
+  text-align: center;  /* 居中文本 */
+  flex: 1; /* 让标题占据剩余空间以支持居中 */
+  max-width: calc(100% - 50rpx);  /* 保证标题的最大宽度留出 50rpx 的空间给 NEW 标签 */
+  margin-right: 70rpx;
+}
+
+/* NEW 标签 */
+.new-tag {
+  position: absolute;
+  right: 20rpx;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #ff5e5e;
+  color: white;
+  font-size: 24rpx;
+  padding: 5rpx 15rpx;
+  border-radius: 20rpx;
+}
+
+/* 勾选按钮样式 */
+.check-button {
+  width: 40rpx;
+  height: 40rpx;
+  border-radius: 50%;
+  border: 2rpx solid #8ba89c;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 20rpx;
+  transition: all 0.3s ease;
+}
+
+.check-button.checked {
+  background-color: #8ba89c;
+  border-color: #8ba89c;
+}
+
+.check-icon {
+  color: transparent;
+  font-size: 24rpx;
+}
+
+.check-button.checked .check-icon {
+  color: #ffffff;
+}
+
+/* 已勾选的标题样式 */
+.checked-title {
+  text-decoration: line-through;
+  opacity: 0.7;
+}
+
+.loading-tips {
+  text-align: center;
+  padding: 20rpx;
+  color: #999;
+  font-size: 24rpx;
+}

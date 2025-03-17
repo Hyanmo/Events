@@ -1,0 +1,42 @@
+<view class="container">
+  <!-- 顶部标题 -->
+  <view class="header">
+    <text class="title">📅 活动日程表</text>
+  </view>
+
+  <!-- 遍历月份 -->
+  <block wx:for="{{sortedKeys}}" wx:key="month">
+    <view class="month-section">
+      <!-- 月份标题 -->
+      <view class="month-title">
+        <view class="month-icon">★</view>
+        <text>{{events[item].year}}年{{events[item].month}}月</text>
+      </view>
+
+      <!-- 遍历活动 -->
+      <block wx:for="{{events[item].items}}" wx:key="index">
+        <view class="event-item" bindtap="goToEventsDetail" data-id="{{item._id}}">
+          <!-- 添加勾选按钮 -->
+          <view class="check-button {{checkedEvents[item._id] ? 'checked' : ''}}" catchtap="toggleEventCheck" data-id="{{item._id}}" data-check-button="true">
+            <text class="check-icon">✓</text>
+          </view>
+          <!-- 活动时间 -->
+          <text class="event-time">{{item.date}} {{item.time}}</text>
+          <!-- 活动名称 -->
+          <text class="event-title">{{item.title}}</text>
+          <!-- NEW 标签 -->
+          <view class="new-tag" wx:if="{{item.isNew}}">NEW</view>
+        </view>
+      </block>
+    </view>
+  </block>
+  <!-- 在容器最底部添加 -->
+  <view class="loading-tips" wx:if="{{isLoading}}">
+    <text>加载中...</text>
+  </view>
+  <view class="loading-tips" wx:if="{{!hasMore && sortedKeys.length > 0}}">
+    <text>没有更多数据了</text>
+  </view>
+</view>
+
+<service-button />

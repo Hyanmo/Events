@@ -1,0 +1,17 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/event-detail/event-detail"
+  ],
+  "window": {
+    "navigationBarTitleText": "许杨玉琢",
+    "navigationBarBackgroundColor": "#6D8B74",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#F4F4F2",
+    "backgroundTextStyle": "dark"
+  },
+  "lazyCodeLoading": "requiredComponents",
+  "usingComponents": {
+    "service-button": "/components/service-button/service-button"
+  }
+}

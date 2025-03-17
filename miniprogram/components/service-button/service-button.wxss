@@ -1,0 +1,173 @@
+.service-button {
+  position: fixed;
+  right: 40rpx;
+  bottom: 180rpx;
+  width: 100rpx;
+  height: 100rpx;
+  padding: 0;
+  margin: 0;
+  border-radius: 50%;
+  background: none;
+  border: none;
+  z-index: 999;
+}
+
+.service-button::after {
+  border: none;
+}
+
+.service-icon {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+
+.toolbar {
+  position: fixed;
+  right: 30rpx;
+  bottom: 160rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 999;
+}
+
+.tool-button {
+  width: 80rpx;
+  height: 80rpx;
+  padding: 0;
+  margin: 8rpx 0;
+  border-radius: 50%;
+  background: rgba(139, 168, 156, 0.95);  /* 提高不透明度 */
+  box-shadow: 0 2rpx 6rpx rgba(0, 0, 0, 0.15);
+  opacity: 0;
+  transform: translateY(20rpx);
+  transition: all 0.3s ease;
+}
+
+.tool-button:active {
+  transform: scale(0.95);
+  background: rgba(139, 168, 156, 1);
+  box-shadow: 0 4rpx 8rpx rgba(0, 0, 0, 0.2);
+}
+
+.toggle-button {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  background: rgba(139, 168, 156, 0.95);  /* 提高不透明度 */
+  box-shadow: 0 2rpx 6rpx rgba(0, 0, 0, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.toggle-button:active {
+  transform: scale(0.95);
+  background: rgba(139, 168, 156, 1);
+  box-shadow: 0 4rpx 8rpx rgba(0, 0, 0, 0.2);
+}
+
+.tool-icon {
+  width: 55%;
+  height: 55%;
+  margin: 22.5%;
+}
+
+.toggle-button {
+  width: 80rpx;  /* 主按钮尺寸减小 */
+  height: 80rpx;
+  border-radius: 50%;
+  background: rgba(139, 168, 156, 0.404);  /* 增加透明度 */
+  box-shadow: 0 2rpx 6rpx rgba(0, 0, 0, 0.08);
+}
+
+.tool-name {
+  right: 100rpx;  /* 调整提示文字位置 */
+  font-size: 22rpx;  /* 文字稍微小一点 */
+  background: rgba(0, 0, 0, 0.5);  /* 提示背景更透明 */
+  padding: 4rpx 12rpx;
+}
+
+.tools-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20rpx;
+}
+
+.tool-button {
+  width: 100rpx;
+  height: 100rpx;
+  padding: 0;
+  margin: 10rpx 0;
+  border-radius: 50%;
+  background: #8ba89c;  /* 莫兰迪绿色 */
+  box-shadow: 0 4rpx 8rpx rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  transform: translateY(20rpx);
+  transition: all 0.3s ease;
+}
+
+.tool-button.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.tool-button::after {
+  border: none;
+}
+
+.tool-icon {
+  width: 50%;
+  height: 50%;
+  margin: 25%;
+  filter: brightness(2);  /* 使图标变白 */
+}
+
+.toggle-button {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+  background: #8ba89c;  /* 莫兰迪绿色 */
+  box-shadow: 0 4rpx 8rpx rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.toggle-icon {
+  width: 50%;
+  height: 50%;
+  transition: transform 0.3s ease;
+  filter: brightness(2);  /* 使图标变白 */
+}
+
+.toggle-icon.rotate {
+  transform: rotate(45deg);
+}
+
+/* 添加工具名称提示 */
+.tool-button {
+  position: relative;
+}
+
+.tool-name {
+  position: absolute;
+  right: 120rpx;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  padding: 4rpx 16rpx;
+  border-radius: 8rpx;
+  font-size: 24rpx;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  white-space: nowrap;
+}
+
+.tool-button.show .tool-name {
+  opacity: 1;
+}

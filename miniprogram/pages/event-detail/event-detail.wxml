@@ -1,0 +1,15 @@
+<view class="event-detail">
+  <image class="cover" src="{{event.cover}}" mode="aspectFill" bindtap="previewImage"></image>
+  <view class="content">
+    <text class="title">{{event.title}}</text>
+    <text class="time">⏱ {{event.fulltime}}</text>
+    <text class="location">📍 {{event.location}}</text>
+    <text class="description">{{event.description}}</text>
+  </view>
+</view>
+
+<view class="home1-button" bindtap="goHome">
+  <image src="cloud://yanmo-3g8s1hmd1faa3280.7961-yanmo-3g8s1hmd1faa3280-1342521606/images/home1.png" class="home-icon"></image>
+</view>
+
+<service-button />

@@ -1,0 +1,20 @@
+<view class="toolbar {{isExpanded ? 'expanded' : ''}}">
+  <view class="tools-container">
+    <button 
+      wx:for="{{tools}}" 
+      wx:key="type"
+      class="tool-button {{isExpanded ? 'show' : ''}}"
+      open-type="{{item.type}}"
+      style="transition-delay: {{index * 0.1}}s">
+      <image src="{{item.icon}}" class="tool-icon"></image>
+      <text class="tool-name">{{item.name}}</text>
+    </button>
+  </view>
+  
+  <view class="toggle-button" bindtap="toggleExpand">
+    <image 
+      src="cloud://yanmo-3g8s1hmd1faa3280.7961-yanmo-3g8s1hmd1faa3280-1342521606/images/menu.png" 
+      class="toggle-icon {{isExpanded ? 'rotate' : ''}}">
+    </image>
+  </view>
+</view>

@@ -1,0 +1,28 @@
+page {
+  font-family: "Arial", sans-serif;
+}
+
+button {
+  cursor: pointer;
+}
+
+.home-icon {
+  width: 60rpx;
+  height: 60rpx;
+}
+
+.home1-button {
+  background-color: #8D9B89;
+  width: 100rpx;
+  height: 100rpx;
+  position: fixed;
+  bottom: 90%;
+  right: 30rpx;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4rpx 6rpx rgba(0, 0, 0, 0.2);
+  z-index: 999;
+}
+
