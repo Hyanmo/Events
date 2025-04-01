@@ -8,6 +8,13 @@
   </view>
 </view>
 
+<view class="ticket-info">
+  <text>{{ticketInfo}}</text>
+  <view wx:if="{{event.ticketLink}}" class="ticket-link" bindtap="goToTicket">
+    <button type="primary" size="mini">前往购票</button>
+  </view>
+</view>
+
 <view class="home1-button" bindtap="goHome">
   <image src="cloud://yanmo-3g8s1hmd1faa3280.7961-yanmo-3g8s1hmd1faa3280-1342521606/images/home1.png" class="home-icon"></image>
 </view>

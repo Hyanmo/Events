@@ -17,7 +17,11 @@
       <block wx:for="{{events[item].items}}" wx:key="index">
         <view class="event-item" bindtap="goToEventsDetail" data-id="{{item._id}}">
           <!-- 添加勾选按钮 -->
-          <view class="check-button {{checkedEvents[item._id] ? 'checked' : ''}}" catchtap="toggleEventCheck" data-id="{{item._id}}" data-check-button="true">
+          <view class="check-button {{checkedEvents[item._id] ? 'checked' : ''}}" 
+              wx:if="{{item.canSetReminder}}"
+              catch:tap="toggleEventCheck" 
+              data-id="{{item._id}}"
+              data-check-button="true">
             <text class="check-icon">✓</text>
           </view>
           <!-- 活动时间 -->

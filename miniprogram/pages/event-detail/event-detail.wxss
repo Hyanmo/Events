@@ -73,3 +73,65 @@ page {
   margin-top: 20rpx;
   padding-bottom: 30rpx;
 }
+
+.ticket-info {
+  margin: 30rpx;
+  padding: 40rpx;
+  background: #ffffff;
+  border-radius: 16rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.08);
+  position: relative;
+  border: 2rpx dashed #8C9A87;
+}
+
+/* 添加票根锯齿效果 */
+.ticket-info::before,
+.ticket-info::after {
+  content: '';
+  position: absolute;
+  width: 20rpx;
+  height: 100%;
+  top: 0;
+  background-image: radial-gradient(circle at 0 6rpx, transparent 6rpx, #ffffff 7rpx);
+  background-size: 20rpx 12rpx;
+  background-repeat: repeat-y;
+}
+
+.ticket-info::before {
+  left: -10rpx;
+}
+
+.ticket-info::after {
+  right: -10rpx;
+  transform: rotate(180deg);
+}
+
+.ticket-info text {
+  display: block;
+  font-size: 28rpx;
+  color: #6E7265;
+  line-height: 1.8;
+  margin-bottom: 20rpx;
+  padding: 0 20rpx;
+}
+
+.ticket-link {
+  margin-top: 20rpx;
+  text-align: center;
+}
+
+.ticket-link button {
+  width: 40%;
+  background: #8C9A87;
+  color: #ffffff;
+  font-size: 26rpx;
+  padding: 12rpx 0;
+  border-radius: 30rpx;
+  box-shadow: 0 2rpx 6rpx rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.ticket-link button:active {
+  transform: scale(0.95);
+  background: #7A8775;
+}
