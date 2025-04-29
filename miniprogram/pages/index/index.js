@@ -35,6 +35,11 @@ Page({
             const [year, month] = event.date.split('-').slice(0, 2)
             const key = `${year}-${month}`
 
+            // 添加事件状态标记
+            const eventDate = new Date(event.fulltime)
+            const now = new Date()
+            event.isPast = eventDate < now
+
             // 添加是否可以设置提醒的标志
             if (event.ticketTime) {
               event.canSetReminder = new Date(event.ticketTime) > new Date()

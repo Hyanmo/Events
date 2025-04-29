@@ -15,7 +15,7 @@
 
       <!-- 遍历活动 -->
       <block wx:for="{{events[item].items}}" wx:key="index">
-        <view class="event-item" bindtap="goToEventsDetail" data-id="{{item._id}}">
+        <view class="event-item {{item.isPast ? 'past-event' : ''}}" bindtap="goToEventsDetail" data-id="{{item._id}}">
           <!-- 添加勾选按钮 -->
           <view class="check-button {{checkedEvents[item._id] ? 'checked' : ''}}" 
               wx:if="{{item.canSetReminder}}"
@@ -30,6 +30,8 @@
           <text class="event-title">{{item.title}}</text>
           <!-- NEW 标签 -->
           <view class="new-tag" wx:if="{{item.isNew}}">NEW</view>
+          <!-- 过去事件标记 -->
+          <view class="past-tag" wx:if="{{item.isPast}}">已结束</view>
         </view>
       </block>
     </view>

@@ -126,3 +126,40 @@
   color: #999;
   font-size: 24rpx;
 }
+
+
+/* 过去事件样式 */
+.past-event {
+  background: #f5f5f5;
+  opacity: 0.8;
+}
+
+.past-event .event-title {
+  color: #999;
+}
+
+.past-event .event-time {
+  color: #999;
+}
+
+.past-event .event-dot {
+  background-color: #999;
+}
+
+/* 过去事件标签 */
+.past-tag {
+  position: absolute;
+  right: 20rpx;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #999;
+  color: white;
+  font-size: 24rpx;
+  padding: 5rpx 15rpx;
+  border-radius: 20rpx;
+}
+
+/* 调整NEW标签和过去事件标签的布局 */
+.new-tag, .past-tag {
+  margin-left: 10rpx;
+}
