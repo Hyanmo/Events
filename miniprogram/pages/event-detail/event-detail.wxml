@@ -3,7 +3,7 @@
   <view class="content">
     <text class="title">{{event.title}}</text>
     <text class="time">⏱ {{event.fulltime}}</text>
-    <text class="location">📍 {{event.location}}</text>
+    <text class="location" bindtap="openLocation">📍 {{event.location}}</text>
     <text class="description">{{event.description}}</text>
   </view>
 </view>
