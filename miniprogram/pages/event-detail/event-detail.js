@@ -48,7 +48,25 @@ Page({
       current: this.data.event.cover
     });
   },
+  // 导航到活动地点
+  openLocation() {
+    if (!this.data.event.location) {
+      wx.showToast({
+        title: '位置信息不存在',
+        icon: 'none'
+      });
+      return;
+    }
 
+    // 直接打开地图选择器
+    wx.openLocation({
+      latitude: this.data.event.latitude || 0,
+      longitude: this.data.event.longitude || 0,
+      name: this.data.event.location,
+      address: this.data.event.location,
+      scale: 18
+    });
+  },
   goHome() {
     wx.navigateTo({
       url: "/pages/index/index"

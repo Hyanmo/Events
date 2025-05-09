@@ -59,10 +59,36 @@ page {
 /* 活动地点 */
 .location {
   font-size: 28rpx;
-  color: #6E7265;
+  color: #6D8B74;
+  margin: 20rpx 0;
   display: flex;
   align-items: center;
+  padding: 15rpx 30rpx;
+  background: #F6F7F1;
+  border-radius: 30rpx;
+  border: 2rpx solid #6D8B74;
+  box-shadow: 0 2rpx 8rpx rgba(109, 139, 116, 0.2);
+  transition: all 0.3s ease;
 }
+
+.location:active {
+  transform: scale(0.98);
+  background: #EAECE5;
+  box-shadow: 0 1rpx 4rpx rgba(109, 139, 116, 0.1);
+}
+
+/* 添加导航图标 */
+.location::after {
+  content: '';
+  display: inline-block;
+  width: 24rpx;
+  height: 24rpx;
+  margin-left: 10rpx;
+  background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiM2RDhCNzQiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cGF0aCBkPSJNMTIgM2M0Ljk3IDAgOSA0LjAzIDkgOXMtNC4wMyA5LTkgOS05LTQuMDMtOS05IDQtOSA5LTl6Ii8+PHBhdGggZD0iTTkgOWg2djZIOXoiLz48L3N2Zz4=');
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0.8;
+  }
 
 /* 活动描述 */
 .description {

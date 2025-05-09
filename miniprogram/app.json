@@ -11,6 +11,11 @@
     "backgroundTextStyle": "dark"
   },
   "lazyCodeLoading": "requiredComponents",
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于查看活动地点"
+    }
+  },
   "usingComponents": {
     "service-button": "/components/service-button/service-button"
   }
