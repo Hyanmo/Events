@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "openapi": [
+      "subscribeMessage.send"
+    ]
+  },
+  "triggers": [],
+  "version": "2.0",
+  "runtime": "nodejs16"
+}

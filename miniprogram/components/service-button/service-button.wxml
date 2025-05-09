@@ -4,7 +4,9 @@
       wx:for="{{tools}}" 
       wx:key="type"
       class="tool-button {{isExpanded ? 'show' : ''}}"
-      open-type="{{item.type}}"
+      open-type="{{item.type === 'share' ? 'share' : item.type === 'contact' ? 'contact' : ''}}"
+      bindtap="{{item.type === 'subscribe' ? 'handleToolClick' : ''}}"
+      data-index="{{index}}"
       style="transition-delay: {{index * 0.1}}s">
       <image src="{{item.icon}}" class="tool-icon"></image>
       <text class="tool-name">{{item.name}}</text>
