@@ -33,7 +33,7 @@ exports.main = async (event, context) => {
       hour12: true
     })
     
-    const endTime = now.toLocaleString('en-US', {
+    let endTime = now.toLocaleString('en-US', {
       month: 'numeric',
       day: 'numeric',
       year: 'numeric',
@@ -41,6 +41,12 @@ exports.main = async (event, context) => {
       minute: '2-digit',
       hour12: true
     })
+
+    // 处理跨天的情况
+    if (endTime.includes('12:') && endTime.includes('AM')) {
+      // 如果是凌晨12点，将其修改为00:xx AM的格式
+      endTime = endTime.replace('12:', '00:')
+    }
 
     const reminders = await db.collection('ticketReminders')
       .where({
