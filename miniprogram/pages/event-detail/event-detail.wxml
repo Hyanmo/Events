@@ -5,6 +5,11 @@
     <text class="time">⏱ {{event.fulltime}}</text>
     <text class="location" bindtap="openLocation">📍 {{event.location}}</text>
     <text class="description">{{event.description}}</text>
+    <!-- 通知栏 -->
+    <view class="notification-bar"  wx:if="{{countdown > 0 || countdownHours > 0}}">
+      <text class="countdown">距离活动开始还有{{countdown}}天{{countdownHours}}小时，  </text>
+      <button class="calendar-btn" bindtap="addToCalendar">添加日历提醒📅</button>
+    </view>
   </view>
 </view>
 
