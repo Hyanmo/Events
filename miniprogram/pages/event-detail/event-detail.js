@@ -95,23 +95,72 @@ Page({
     calculateCountdown() {
         const event = this.data.event;
         if (!event.fulltime) return;
-
-        const eventDate = new Date(event.fulltime);
+        
+        console.log('原始活动时间:', event.fulltime);
+        
+        // 解析活动时间字符串
+        const [datePart, timePart] = event.fulltime.split(' ');
+        const [year, month, day] = datePart.split('-').map(Number);
+        
+        console.log('解析后的日期:', year, month, day);
+        
+        // 获取东八区当前时间
         const now = new Date();
-        const diffTime = eventDate - now;
-        const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24)); // 计算天数
-        const diffHours = Math.floor((diffTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)); // 计算小时数
-
-        if (diffDays > 0 || diffHours > 0) {
+        const utc = now.getTime() + (now.getTimezoneOffset() * 60000);
+        const nowCst = new Date(utc + (3600000 * 8));
+        
+        // 只比较日期部分
+        const today = new Date(nowCst.getFullYear(), nowCst.getMonth(), nowCst.getDate());
+        const eventDay = new Date(year, month - 1, day);
+        
+        // 如果活动日期已过，设置isExpired为true
+        if (today > eventDay) {
+            console.log('活动日期已过');
             this.setData({
-                countdown: diffDays, // 更新倒计时天数
-                countdownHours: diffHours // 更新倒计时小时数
+                isExpired: true
             });
-        } else {
-            this.setData({
-                countdown: 0, // 如果活动已开始，倒计时为0
-                countdownHours: 0}); // 如果活动已开始，倒计时为0
+            return;
         }
+        
+        // 以下是原有的倒计时计算逻辑
+        const eventDate = new Date();
+        eventDate.setFullYear(year);
+        eventDate.setMonth(month - 1);
+        eventDate.setDate(day);
+        
+        if (timePart) {
+            const [hour, minute] = timePart.split(':').map(Number);
+            console.log('解析后的时间:', hour, minute);
+            eventDate.setHours(hour, minute, 0, 0);
+        } else {
+            eventDate.setHours(0, 0, 0, 0);
+        }
+        
+        const eventTime = eventDate.getTime();
+        const nowTime = nowCst.getTime();
+        
+        if (nowTime >= eventTime) {
+            this.setData({
+                countdown: 0,
+                countdownHours: 0,
+                countdownMinutes: 0
+            });
+            return;
+        }
+        
+        const diffTime = eventTime - nowTime;
+        const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+        const diffHours = Math.floor((diffTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const diffMinutes = Math.floor((diffTime % (1000 * 60 * 60)) / (1000 * 60));
+        
+        console.log('计算结果 - 天数:', diffDays, '小时数:', diffHours, '分钟数:', diffMinutes);
+    
+        this.setData({
+            countdown: diffDays,
+            countdownHours: diffHours,
+            countdownMinutes: diffMinutes,
+            isExpired: false
+        });
     },
   // 添加到日历功能
   addToCalendar() {

@@ -6,9 +6,14 @@
     <text class="location" bindtap="openLocation">📍 {{event.location}}</text>
     <text class="description">{{event.description}}</text>
     <!-- 通知栏 -->
-    <view class="notification-bar"  wx:if="{{countdown > 0 || countdownHours > 0}}">
-      <text class="countdown">距离活动开始还有{{countdown}}天{{countdownHours}}小时，  </text>
-      <button class="calendar-btn" bindtap="addToCalendar">添加日历提醒📅</button>
+    <view class="notification-bar" wx:if="{{!isExpired}}">
+      <block wx:if="{{countdown <= 0 && countdownHours <= 0 && countdownMinutes <= 0}}">
+        <text class="countdown">活动进行中</text>
+      </block>
+      <block wx:else>
+        <text class="countdown">距离活动开始还有{{countdown}}天{{countdownHours}}小时{{countdownMinutes}}分钟，  </text>
+        <button class="calendar-btn" bindtap="addToCalendar">添加日历提醒📅</button>
+      </block>
     </view>
   </view>
 </view>
