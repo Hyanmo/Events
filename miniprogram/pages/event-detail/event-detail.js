@@ -129,9 +129,14 @@ Page({
         eventDate.setDate(day);
         
         if (timePart) {
-            const [hour, minute] = timePart.split(':').map(Number);
-            console.log('解析后的时间:', hour, minute);
-            eventDate.setHours(hour, minute, 0, 0);
+            // 处理时间段格式（例如：14:00-19:00），只取开始时间
+            const startTime = timePart ? timePart.split('-')[0].trim() : null;
+            let hours = 0, minutes = 0;
+            if (startTime && startTime.includes(':')) {
+                [hours, minutes] = startTime.split(':').map(str => parseInt(str, 10));
+            }
+            console.log('解析后的时间:', hours, minutes);
+            eventDate.setHours(hours, minutes, 0, 0);
         } else {
             eventDate.setHours(0, 0, 0, 0);
         }
@@ -183,77 +188,26 @@ Page({
         (eventDate.getTime() + 24 * 60 * 60 * 1000) / 1000 : // 全天事件结束时间为第二天
         (eventDate.getTime() + 2 * 60 * 60 * 1000) / 1000; // 非全天事件默认2小时
 
-    wx.getSetting({
-      success(res) {
-        // 判断是否已经授权
-        if (!res.authSetting['scope.addPhoneCalendar']) {
-          wx.authorize({
-            scope: 'scope.addPhoneCalendar',
-            success() {
-              // 用户已授权，调用添加日程 API
-              wx.addPhoneCalendar({
-                title: event.title, // 日程标题，必填项
-                startTime: startTime, // 日程开始时间，必填项
-                endTime: endTime, // 日程结束时间，必填项
-                location: event.location || '', // 日程地点，非必填项
-                notes: event.description || '', // 日程备注，非必填项
-                allDay: isAllDay, // 设置全天事件标志
-                alarmOffset: 60*60*24, // 提前 1 天提醒
-                success(res) {
-                  console.log(res); // 日程添加成功的回调函数
-                  wx.showToast({
-                    title: '添加日程成功',
-                    icon: 'success',
-                    duration: 2000
-                  });
-                },
-                fail(res) {
-                  console.log(res); // 日程添加失败的回调函数
-                  wx.showToast({
-                    title: '添加日程失败',
-                    icon: 'none',
-                    duration: 2000
-                  });
-                }
-              });
-            },
-            fail() {
-              // 用户拒绝授权，提示用户授权
-              wx.showToast({
-                title: '请先授权',
-                icon: 'none',
-                duration: 2000
-              });
-            }
-          });
-        } else {
-          // 已经授权，调用添加日程 API
-          wx.addPhoneCalendar({
-            title: event.title, // 日程标题，必填项
-            startTime: startTime, // 日程开始时间，必填项
-            endTime: endTime, // 日程结束时间，必填项
-            location: event.location || '', // 日程地点，非必填项
-            notes: event.description || '', // 日程备注，非必填项
-            allDay: isAllDay, // 设置全天事件标志
-            alarmOffset: 60*60*24, // 提前 1 天提醒
-            success(res) {
-              console.log(res); // 日程添加成功的回调函数
-              wx.showToast({
-                title: '添加日程成功',
-                icon: 'success',
-                duration: 2000
-              });
-            },
-            fail(res) {
-              console.log(res); // 日程添加失败的回调函数
-              wx.showToast({
-                title: '添加日程失败',
-                icon: 'none',
-                duration: 2000
-              });
-            }
-          });
-        }
+    // 直接调用添加日历API，这会自动触发授权弹窗
+    wx.addPhoneCalendar({
+      title: event.title, // 日程标题，必填项
+      startTime: startTime, // 日程开始时间，必填项
+      endTime: endTime, // 日程结束时间，必填项
+      location: event.location || '', // 日程地点，非必填项
+      notes: event.description || '', // 日程备注，非必填项
+      allDay: isAllDay, // 设置全天事件标志
+      success: () => {
+        wx.showToast({
+          title: '已添加到日历',
+          icon: 'success'
+        });
+      },
+      fail: (err) => {
+        console.error('添加日历失败：', err);
+        wx.showToast({
+          title: '添加失败',
+          icon: 'error'
+        });
       }
     });
   }
