@@ -194,8 +194,9 @@ Page({
       startTime: startTime, // 日程开始时间，必填项
       endTime: endTime, // 日程结束时间，必填项
       location: event.location || '', // 日程地点，非必填项
-      notes: event.description || '', // 日程备注，非必填项
+      description: event.description || '', // 日程备注，非必填项
       allDay: isAllDay, // 设置全天事件标志
+      alarmOffset: 60*60*24, //提前一天提醒
       success: () => {
         wx.showToast({
           title: '已添加到日历',
